@@ -9,19 +9,18 @@ this is amazing!!!!!!
 welcome to Tweetme2
 
 <div id='tweets'>
-    Replace me
+    Loading...
 </div>
 
 
 <script>
     const tweetsElements = document.getElementById("tweets") // get an html element
-    tweetsElements.innerHTML = 'Loading...' // set new html in that element
+    //tweetsElements.innerHTML = 'Loading...' // set new html in that element
 
-    let el1 = "<h1>Hi there 1</h1>"
-    let el2 = "<h1>Hi there 2</h1>"
-    let el3 = "<h1>Hi there 3</h1>"
-
-    tweetsElements.innerHTML = el1 + el2 + el3
+    //let el1 = "<h1>Hi there 1</h1>"
+    //let el2 = "<h1>Hi there 2</h1>"
+    //let el3 = "<h1>Hi there 3</h1>"
+    //tweetsElements.innerHTML = el1 + el2 + el3
 
 
     const xhr = new XMLHttpRequest() // 
@@ -34,8 +33,17 @@ welcome to Tweetme2
     xhr.open(method, url)
     xhr.onload = function(){
         const serverResponse = xhr.response
-        let listedItem = serverResponse.response
-        console.log(listedItem)
+        const listedItems = serverResponse.response // array
+        let finalTweetStr = ""
+        let i;
+        for(i=0 ;i<listedItems.length; i++){
+            console.log(i)
+            console.log(listedItems[i])
+            let currentItem = "<div class='mb-4'><h1>" + listedItems[i].id + "</h1>" + "<p>" + listedItems[i].content + "</p></div>"
+                finalTweetStr += currentItem
+        }
+        tweetsElements.innerHTML = finalTweetStr
+        //console.log(listedItems)
     }
     
     xhr.send()
