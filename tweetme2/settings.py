@@ -26,7 +26,7 @@ SECRET_KEY = 'nu3p1#&s2_tyy3pjbj45w$tc%p4r)pb3xuqpmwqti(b3)s@zoa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.shopbito.com']
 
 
 # Application definition
