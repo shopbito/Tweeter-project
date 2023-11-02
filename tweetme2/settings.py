@@ -27,6 +27,7 @@ SECRET_KEY = 'nu3p1#&s2_tyy3pjbj45w$tc%p4r)pb3xuqpmwqti(b3)s@zoa'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.shopbito.com']
+LOGIN_URL ="/login"
 
 
 # Application definition
