@@ -16,6 +16,10 @@ def home_view(request, *args,  **kwargs):
     return render(request, "pages/home.html", context={}, status=200)
 
 def tweet_create_view(request, *args, **kwargs):
+    '''
+    REST API Create View -> DRF
+    
+    '''
     user = request.user
     if not request.user.is_authenticated:
         user = None
@@ -27,7 +31,7 @@ def tweet_create_view(request, *args, **kwargs):
     if form.is_valid():
         obj = form.save(commit=False)
         # do other form related logic
-        obj.user = user 
+        obj.user = user
         obj.save()
         if request.is_ajax():
             return JsonResponse(obj.serialize(), status=201) # 201 == created iteams
