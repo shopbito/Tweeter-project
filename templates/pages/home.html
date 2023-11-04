@@ -80,7 +80,7 @@ function handleTweetCreateFormDidSubmit(event){
             } else{
                 alert("An error occurred. please try again.")
             }
-        } else if (xhr.status === 401){
+        } else if (xhr.status === 403){
             alert("you must login!")
             window.location.href = "/login"
 
