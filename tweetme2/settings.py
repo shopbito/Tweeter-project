@@ -26,7 +26,7 @@ SECRET_KEY = 'nu3p1#&s2_tyy3pjbj45w$tc%p4r)pb3xuqpmwqti(b3)s@zoa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.shopbito.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.shopbito.com', 'localhost']
 LOGIN_URL ="/login"
 
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     #third_party
+    'corsheaders',
     'rest_framework',
     #internal
     'tweets',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -129,6 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CORS_ALLOW_ALL_ORIGINS = True # any website has access to my api
+CORS_URLS_REGEX = r"^/api/.*$"
 
 
 DEFAULT_RENDERER_CLASSES =[
