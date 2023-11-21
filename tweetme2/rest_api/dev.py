@@ -5,7 +5,7 @@ from rest_framework import authentication
 User = get_user_model()
 
 class DevAuthentication(authentication.BasicAuthentication):
-    def authenticate_credentials(self,  request):
+    def authenticate(self,  request):
         qs = User.objects.all()
         user = qs.order_by("?").first()
         return (user, None)
