@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .forms import TweetForm 
 from .models import Tweet
-from.serializers import (
+from .serializers import (
     TweetSerializer,
     TweetActionSerializer,
     TweetCreateSerializer
@@ -26,7 +26,7 @@ def home_view(request, *args,  **kwargs):
 
 
 @api_view(['POST']) # http method the client == POST
-#@authentication_classes([SessionAuthentication, MyCustomAuth])
+#@authentication_classes([SessionAuthentication])
 @permission_classes([IsAuthenticated]) #REST API course
 def tweet_create_view(request, *args, **kwargs):
     serializer = TweetCreateSerializer(data = request.POST)
