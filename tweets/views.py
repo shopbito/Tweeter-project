@@ -29,7 +29,7 @@ def home_view(request, *args,  **kwargs):
 #@authentication_classes([SessionAuthentication])
 @permission_classes([IsAuthenticated]) #REST API course
 def tweet_create_view(request, *args, **kwargs):
-    serializer = TweetCreateSerializer(data = request.POST)
+    serializer = TweetCreateSerializer(data = request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(user=request.user) 
         return Response(serializer.data, status=201)
@@ -62,11 +62,6 @@ def tweet_delete_view(request, tweet_id, *args, **kwargs):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def tweet_action_view(request, *args, **kwargs):
-    '''
-    id is required
-    Action options are: like, unlike, retweet
-    
-    '''
     serializer = TweetActionSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         data = serializer.validated_data
