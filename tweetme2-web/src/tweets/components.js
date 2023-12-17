@@ -1,5 +1,7 @@
-import React, {useState}  from 'react';
+import React, {useEffect, useState}  from 'react';
 import{TweetCreate} from './create';
+import { Tweet } from './detail';
+import {apiTweetDetail} from './lookup';
 import {TweetsList} from './list';
 
 
@@ -19,6 +21,26 @@ export function TweetsComponent(props){
 }
 
   
+export function TweetDetailComponent(props){
+  const{tweetId} = props
+  const[didLookup, setDidLookup] = useState(false)
+  const[tweet, setTweet] = useState(null)
 
+  const handleBackendLookUP = (response, status) =>{
+    if(status === 200){
+      setTweet(response)
+    }else {
+      alert("There was an error finding your tweet")
+    }
+  }
+  useEffect(() =>{
+      if (didLookup === false){
+        apiTweetDetail(tweetId, handleBackendLookUP )
+        setDidLookup(true)
+      }
+  }, [tweetId, didLookup, setDidLookup])
+
+  return tweet === null ? null : <Tweet tweet={tweet} className={props.className}/>
+}
 
   
