@@ -12,6 +12,6 @@ Base ENDPOINT /api/profile/
 
 
 urlpatterns = [
-    path('<str:username>/follow/', user_follow_view),
+    path('<str:username>/follow', user_follow_view),
     
 ]

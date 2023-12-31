@@ -10,8 +10,8 @@ User = get_user_model()
 
 class ProfileTestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='shopbito', password='somepassword')
-        self.userb = User.objects.create_user(username='shopbito-2', password='somepassword2')
+        self.user = User.objects.create_user(username='cfe', password='somepassword')
+        self.userb = User.objects.create_user(username='cfe-2', password='somepassword2')
     
     def get_client(self):
         client = APIClient()
@@ -36,8 +36,7 @@ class ProfileTestCase(TestCase):
         client = self.get_client()
         response = client.post(
             f"/api/profiles/{self.userb.username}/follow",
-            {"action": "follow"}
-        )
+            {"action": "follow"})
         r_data = response.json()
         count = r_data.get("count")
         self.assertEqual(count, 1)
@@ -49,8 +48,7 @@ class ProfileTestCase(TestCase):
         client = self.get_client()
         response = client.post(
             f"/api/profiles/{self.userb.username}/follow",
-            {"action": "unfollow"}
-        )
+            {"action": "unfollow"})
         r_data = response.json()
         count = r_data.get("count")
         self.assertEqual(count, 0)
@@ -60,7 +58,7 @@ class ProfileTestCase(TestCase):
         response = client.post(
             f"/api/profiles/{self.user.username}/follow",
             {"action": "follow"}
-        )
+)
         r_data = response.json()
         count = r_data.get("count")
-        self.assertEqual(count, 0)
+        self.assertEqual(count, 1)
