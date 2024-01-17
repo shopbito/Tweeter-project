@@ -16,12 +16,14 @@ export function apiTweetDetail(tweetId, callback){
 
 
 
-export function apiTweetList(username, callback){
+export function apiTweetList(username, callback, nextUrl){
     let endpoit  = "/tweets"
     if (username){
 
         endpoit = `/tweets ?username=${username}`
     }
-
+    if (nextUrl !== null && nextUrl !== undefined){
+        endpoit = nextUrl.replace("http://localhost:8000/api", " ")
+    }
     backendLookup("GET", endpoit, callback)
 }
