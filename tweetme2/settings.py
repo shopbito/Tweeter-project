@@ -27,9 +27,7 @@ SECRET_KEY = 'nu3p1#&s2_tyy3pjbj45w$tc%p4r)pb3xuqpmwqti(b3)s@zoa'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.shopbito.com', 'localhost']
-LOGIN_URL ="/login"
-
-
+LOGIN_URL = "/login"
 
 MAX_TWEET_LENGTH = 240
 TWEET_ACTION_OPTIONS = ["like", "unlike", "retweet"]
@@ -43,11 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    #third_party
+    # third-party
     'corsheaders',
     'rest_framework',
-    #internal
+    # internal
     'accounts',
     'profiles',
     'tweets',
@@ -62,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'tweetme2.urls'
@@ -137,32 +133,37 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
 
 
-CORS_ALLOW_ALL_ORIGINS = True # any website has access to my api
-CORS_URLS_REGEX = r"^/api/.*$"
+CORS_ORIGIN_ALLOW_ALL = True # any website has access to my api
+CORS_URLS_REGEX = r'^/api/.*$'
 
 
-DEFAULT_RENDERER_CLASSES =[
-       'rest_framework.renderers.JSONRenderer',
+DEFAULT_RENDERER_CLASSES = [
+        'rest_framework.renderers.JSONRenderer',
     ]
+
 DEFAULT_AUTHENTICATION_CLASSES = [
     'rest_framework.authentication.SessionAuthentication'
 ]
 if DEBUG:
     DEFAULT_RENDERER_CLASSES += [
-        'rest_framework.renderers.BrowsableAPIRenderer'
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ]
-   # DEFAULT_AUTHENTICATION_CLASSES += [
-   #     'tweetme2.rest_api.dev.DevAuthentication'
-   #]
-REST_FARMEWORK = {
-    
+    DEFAULT_AUTHENTICATION_CLASSES += [
+         'tweetme2.rest_api.dev.DevAuthentication'
+    ]
+REST_FRAMEWORK = {
     
     'DEFAULT_AUTHENTICATION_CLASSES': DEFAULT_AUTHENTICATION_CLASSES,
     'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES
-    
 }
+
+
+
+
+
+
+

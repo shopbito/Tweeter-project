@@ -137,7 +137,7 @@ function loadTweets(tweetsElement) {
         const listedItems = serverResponse // array
         var finalTweetStr = ""
         var i;
-        for (i=0;i<listedItems.length; i++) {
+        for (i=0;i<listedItems.length; i++){
             var tweetObj = listedItems[i]
             var currentItem = formatTweetElement(tweetObj)
             finalTweetStr += currentItem

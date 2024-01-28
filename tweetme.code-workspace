@@ -9,5 +9,15 @@
 			"editor.defaultFormatter": "ms-python.autopep8"
 		},
 		"python.formatting.provider": "none"
+	},
+	"launch": {
+		"configurations": [
+			{
+				"type": "msedge",
+				"name": "http://localhost:8000/api",
+				"request": "launch",
+				"url": "http://localhost:8000/api"
+			}
+		]
 	}
 }
